@@ -7,7 +7,8 @@ function App() {
       <h1>¡Hola, Mundo!</h1>
       <div className="Calculadora">
         <div className="Fila">
-          <Boton></Boton>
+          <Boton>1</Boton>
+          <Boton>+</Boton>
         </div>
         <div className="Fila"></div>
         <div className="Fila"></div>
