@@ -1,9 +1,9 @@
 import React from 'react';
 import '../Stylesheets/Pantalla.css';
 
-const Pantalla = ({ input }) => (
+const Pantalla = ({ Input }) => (
   <div className='Input'>
-    {input}      
+    {Input}      
   </div>
 );
 

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { evaluate } from 'mathjs';
 import './App.css';
 import Boton from './Componentes/Boton';
 import BotonClear from './Componentes/BotonClear';
@@ -6,14 +7,24 @@ import Pantalla from './Componentes/Pantalla';
 
 function App() {
 
-  const [input, setInput] = useState("");
+  const [Input, setInput] = useState("");
 
   const modificarInput = (valor) =>{
-    setInput(input + valor);
+    setInput(Input + valor);
   }
 
-  const borrarInput = () =>{
-    setInput("");
+  const evaluarInput = () =>{
+    try{
+      if(isFinite(evaluate(Input))){
+        setInput(evaluate(Input))
+      }else{
+        alert("El resultado no es un número.");
+        setInput("");
+      }
+    }catch{
+      alert("Error al ejecutar la operación matemática.");
+      setInput("");
+    }
   }
 
   return (
@@ -21,12 +32,12 @@ function App() {
       <h1>¡Hola, Mundo!</h1>
       <div className="Calculadora">
         <div className="Pantalla">
-          <Pantalla input = {input}/>
+          <Pantalla Input = {Input}/>
         </div>
         <div className="Fila">
           <Boton Clicked = {modificarInput}>7</Boton>
           <Boton Clicked = {modificarInput}>8</Boton>
-          <Boton Clicked = {modificarInput}> 9</Boton>
+          <Boton Clicked = {modificarInput}>9</Boton>
           <Boton Clicked = {modificarInput}>+</Boton>
         </div>
         <div className="Fila">
@@ -44,11 +55,11 @@ function App() {
         <div className="Fila">
           <Boton Clicked = {modificarInput}>0</Boton>
           <Boton Clicked = {modificarInput}>.</Boton>
-          <Boton Clicked = {modificarInput}>=</Boton>
+          <Boton Clicked = {evaluarInput}>=</Boton>
           <Boton Clicked = {modificarInput}>/</Boton>
         </div>
         <div className="Fila">
-          <BotonClear Clicked = {borrarInput}>AC</BotonClear>
+          <BotonClear Clicked = {() => setInput("")}>AC</BotonClear>
         </div>
       </div>
     </div>
