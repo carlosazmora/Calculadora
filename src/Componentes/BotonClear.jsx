@@ -4,7 +4,7 @@ import "../Stylesheets/BotonClear.css";
 
 function BotonClear(props) {
   return (
-    <div className="Limpiar">
+    <div className="Limpiar" onClick={() => props.Clicked()}>
       {props.children}
     </div>
   );
