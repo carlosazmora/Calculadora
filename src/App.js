@@ -1,11 +1,16 @@
 import './App.css';
 import Boton from './Componentes/Boton';
+import BotonClear from './Componentes/BotonClear';
+import Pantalla from './Componentes/Pantalla';
 
 function App() {
   return (
     <div className="App">
       <h1>¡Hola, Mundo!</h1>
       <div className="Calculadora">
+        <div className="Pantalla">
+          <Pantalla/>
+        </div>
         <div className="Fila">
           <Boton>7</Boton>
           <Boton>8</Boton>
@@ -31,7 +36,7 @@ function App() {
           <Boton>/</Boton>
         </div>
         <div className="Fila">
-          
+          <BotonClear>AC</BotonClear>
         </div>
       </div>
     </div>
